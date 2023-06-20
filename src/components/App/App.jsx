@@ -1,9 +1,9 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import Statistics from '../Statistics/Statistics';
-import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
-import Section from '../Section/Section';
-import Notification from '../Notification/Notification';
-import styles from './App.module.scss';
+import { useState, useEffect, useMemo, useCallback } from "react";
+import Statistics from "../Statistics/Statistics";
+import FeedbackOptions from "../FeedbackOptions/FeedbackOptions";
+import Section from "../Section/Section";
+import Notification from "../Notification/Notification";
+import styles from "./App.module.scss";
 
 const App = () => {
   // Estado para almacenar las retroalimentacionesF
@@ -17,7 +17,7 @@ const App = () => {
   const [showNotification, setShowNotification] = useState(false);
 
   // Estado para el mensaje de la notificación
-  const [notificationMessage, setNotificationMessage] = useState('');
+  const [notificationMessage, setNotificationMessage] = useState("");
 
   // Estado para controlar la tendencia positiva
   const [isPositiveTrend, setIsPositiveTrend] = useState(false);
@@ -41,7 +41,7 @@ const App = () => {
     if (positivePercentage >= 70) {
       setIsPositiveTrend(true);
       if (isPositiveTrend) {
-        setNotificationMessage('¡Felicidades! La tendencia es positiva');
+        setNotificationMessage("¡Felicidades! La tendencia es positiva");
         setShowNotification(true);
         setTimeout(() => {
           setShowNotification(false);
@@ -53,7 +53,7 @@ const App = () => {
 
     if (!isPositiveTrend && bad > 5) {
       setNotificationMessage(
-        '¡Alerta! Se ha alcanzado un alto nivel de retroalimentación negativa.'
+        "¡Alerta! Se ha alcanzado un alto nivel de retroalimentación negativa."
       );
       setShowNotification(true);
       setTimeout(() => {
@@ -63,7 +63,10 @@ const App = () => {
   }, [good, neutral, bad, isPositiveTrend]);
 
   // Cálculo del total de retroalimentaciones utilizando useMemo
-  const totalFeedback = useMemo(() => good + neutral + bad, [good, neutral, bad]);
+  const totalFeedback = useMemo(
+    () => good + neutral + bad,
+    [good, neutral, bad]
+  );
 
   // Cálculo del porcentaje de retroalimentaciones positivas utilizando useMemo
   const positiveFeedbackPercentage = useMemo(() => {
@@ -74,7 +77,10 @@ const App = () => {
     <div className={styles.container}>
       {/* Sección para dejar retroalimentación */}
       <Section title="Please leave your feedback">
-        <FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={handleFeedback} />
+        <FeedbackOptions
+          options={["good", "neutral", "bad"]}
+          onLeaveFeedback={handleFeedback}
+        />
       </Section>
 
       {/* Sección de estadísticas */}
@@ -96,10 +102,8 @@ const App = () => {
       {showNotification && <Notification message={notificationMessage} />}
 
       <h2>Designed by Emmanuel S Giraldo</h2>
-
     </div>
   );
 };
-
 
 export default App;
