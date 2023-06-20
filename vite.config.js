@@ -6,3 +6,4 @@ export default defineConfig({
   plugins: [react()],
   base: "goit-react-hw-04-feedback"
 })
+

@@ -6,7 +6,7 @@ import Notification from '../Notification/Notification';
 import styles from './App.module.scss';
 
 const App = () => {
-  // Estado para almacenar las retroalimentaciones
+  // Estado para almacenar las retroalimentacionesF
   const [feedback, setFeedback] = useState({
     good: 0,
     neutral: 0,
